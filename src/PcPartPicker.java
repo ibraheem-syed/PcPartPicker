@@ -9,6 +9,7 @@ public class PcPartPicker extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("PC Part Picker");
 		
+		System.out.println("hello");
 		
 		setVisible(true);
 	}
