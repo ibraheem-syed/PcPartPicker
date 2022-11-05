@@ -6,9 +6,17 @@ public class Component {
 	public Double cost;
 	
 	Component(){
-		manufacturer = "manufacturer";
-		modelName = "model name";
-		imagePath = "path/image.jpg";
+		manufacturer = null;
+		modelName = null;
+		imagePath = "default.jpg";
 		cost = 0.0;
 	}
+	
+	Component(String man, String mod, String img, String price){
+		manufacturer = man;
+		modelName = mod;
+		imagePath = img;
+		cost = Double.valueOf(price);
+	}
+	
 }
