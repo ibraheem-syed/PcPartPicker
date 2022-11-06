@@ -26,8 +26,9 @@ public class Main {
 			System.out.println(i.coreCount);
 			System.out.println(i.socketPinCount);
 			System.out.println();
-			
 		}
+		
+		new ComponentSelector(CPUS);
 
 	}
 
