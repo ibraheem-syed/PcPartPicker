@@ -10,3 +10,6 @@
 /ComponentSelector.class
 /ComponentSelector$CompList.class
 /ComponentSelector$ComponentList.class
+/ComponentSelector$listSelectionListener.class
+/ComponentSelector$selectButtonListener.class
+/ComponentSelector$selectListener.class
