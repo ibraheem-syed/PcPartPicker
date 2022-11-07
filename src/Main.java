@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		
+		SystemConfig myBuild = new SystemConfig();
 		File file = new File("datasheets/processors.csv");
 		Scanner input = new Scanner(file);
 
@@ -28,7 +28,7 @@ public class Main {
 			System.out.println();
 		}
 		
-		new ComponentSelector(CPUS);
+		new ComponentSelector(CPUS,myBuild);
 
 	}
 

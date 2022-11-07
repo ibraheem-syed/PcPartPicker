@@ -16,7 +16,14 @@ import javax.imageio.ImageIO;
 
 public class ComponentSelector extends JFrame {
 	final static Integer DIM_MAX = 300;
-	public Integer selectedIdx;
+	private Integer selectedIdx;
+	private ArrayList<? extends Component> compArrList;
+	
+	private String compImgPath;
+	private JButton selectButton = new JButton();
+	private JFrame f = new JFrame();
+	private JList cList = new JList();
+	private JLabel imgLabel;
 	
 	private class selectButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e)
@@ -29,17 +36,39 @@ public class ComponentSelector extends JFrame {
 
 		public ArrayList<? extends Component> listenComps;
 		
-		selectListener(ArrayList<? extends Component>  listenComps){
+		selectListener(ArrayList<? extends Component> listenComps){
 			this.listenComps = listenComps;
 		}
 		
 		@Override
-		public void valueChanged(ListSelectionEvent e) {
-	        boolean adjust = e.getValueIsAdjusting();
+		public void valueChanged(ListSelectionEvent ev) {
+	        boolean adjust = ev.getValueIsAdjusting();
 	        if (!adjust) {
-	        	JList list = (JList<?>) e.getSource();
+	        	JList list = (JList) ev.getSource();
 	        	selectedIdx = list.getSelectedIndex();
 	        	System.out.println(listenComps.get(selectedIdx).modelName);
+	        	System.out.println(listenComps.get(selectedIdx).imagePath);
+	        	String newImg = "images/processors/" + listenComps.get(selectedIdx).imagePath;
+	        	System.out.println(newImg);
+	    		BufferedImage compImg = null;
+	    	    try { compImg = ImageIO.read(new File(newImg)); }
+	    	    catch (IOException e) { e.printStackTrace(); }
+	    	    Integer x,y,width, height = null;
+	    	    Double ratio = null;
+	    	    if(compImg.getHeight() > compImg.getWidth()) {
+	    	    	ratio = DIM_MAX/Double.valueOf(compImg.getHeight());
+	    	    }
+	    	    else { ratio = DIM_MAX/Double.valueOf(compImg.getWidth()); }
+	    	    width = (int)(ratio * compImg.getWidth());
+	    	    height = (int)(ratio * compImg.getHeight());
+	    	    x = (450 - width)/2;
+	    	    y = (400 - height)/2;
+	        
+	    	    Image compScaled = compImg.getScaledInstance(width,height, Image.SCALE_SMOOTH);
+	        	
+	    	    imgLabel.setBounds(x,y,width,height);
+	        	imgLabel.setIcon(new ImageIcon(compScaled));        	
+
 	        }
 	        else {       }
 		
@@ -47,7 +76,12 @@ public class ComponentSelector extends JFrame {
 		
 	}
 	
-	public static JLabel genImgLabel(String filepath) {
+	private static ImageIcon newIcon(String filepath) {
+
+		return null;
+	}
+	
+	private static JLabel genImgLabel(String filepath) {
 		JLabel compImgLabel = new JLabel();
 		BufferedImage compImg = null;
 	    try { compImg = ImageIO.read(new File(filepath)); }
@@ -69,31 +103,35 @@ public class ComponentSelector extends JFrame {
 	    
 		return compImgLabel;
 	}
- 
-	ComponentSelector(ArrayList<? extends Component> compArrList) {  
-		
-		compArrList.sort((o1, o2) -> o1.cost.compareTo(o2.cost));
-		
-	    JFrame f=new JFrame();
-	    JLabel compLabel = new JLabel();
-	    JButton selectButton = new JButton("Select");
-	    String compImgPath = "images/default.jpg";
-	   	    
-	    selectButton.setBounds(550,325,100,50);
-      
-		DefaultListModel<String> compList= new DefaultListModel<>();
-	    for (Component  i : compArrList ) {
-	    	compList.addElement("$" + String.format("%.2f", i.cost)+ " - " + i.manufacturer + ", " + i.modelName);
-
-	    }
+	
+	private static JList<String> genCompList(ArrayList<? extends Component> compArrList) {
 	    
-        JList<String> list = new JList<>(compList);      
-        list.setBounds(450,50,300,250);
-        list.addListSelectionListener(new selectListener(compArrList));
-        
-	    f.add(list);
-//	    f.add(compLabel);
-	    f.add(genImgLabel(compImgPath));
+      	DefaultListModel<String> defaultList= new DefaultListModel<>();
+	    for (Component  i : compArrList ) {
+	    	defaultList.addElement("$" + String.format("%.2f", i.cost)+ 
+	    			" - " + i.manufacturer + ", " + i.modelName);
+	    }
+	    JList<String> compList = new JList<>(defaultList);  
+		return compList;
+	}
+	
+ 
+	ComponentSelector(ArrayList<? extends Component> cArrList, SystemConfig myConfig) {  
+		compArrList = cArrList;
+		compArrList.sort((o1, o2) -> o1.cost.compareTo(o2.cost));
+		compImgPath = "images/processors/default.jpg";
+	    	   
+	    selectButton.setText("Select");
+	    selectButton.setBounds(550,325,100,50);
+	      
+	    cList = genCompList(compArrList);
+	    cList.setBounds(450,50,300,250);
+	    cList.addListSelectionListener(new selectListener(compArrList));
+	    
+	    imgLabel = genImgLabel(compImgPath);
+	    
+        f.add(cList);
+	    f.add(imgLabel);
 	    f.add(selectButton);
 
 	    f.setSize(800,400);  
