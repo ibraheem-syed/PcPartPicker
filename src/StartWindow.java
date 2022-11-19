@@ -11,7 +11,7 @@ import javax.swing.*;
  */
 
 @SuppressWarnings("serial")
-public class StartWindow extends JFrame 
+public class StartWindow extends JFrame
 {
 	/*
 	 * GUI objects necessary for start window creation
@@ -24,7 +24,7 @@ public class StartWindow extends JFrame
 	JPanel centerPanel;
 	JButton finalButton;
 	JButton temp;
-	
+		
 	/*
 	 * Constructor creates main window
 	 */
@@ -99,6 +99,7 @@ public class StartWindow extends JFrame
 			if(e.getSource() == finalButton)
 			{
 				//TODO
+				System.out.println(Main.myBuild.getCPU().modelName);
 			}
 			/*
 			 * processor

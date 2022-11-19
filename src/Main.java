@@ -15,12 +15,13 @@ public class Main
 	 */
 	static SystemConfig myBuild;
 	
-	public static void main(String[] args) throws FileNotFoundException 
+	public static void main(String[] args) throws FileNotFoundException, InterruptedException 
 	{
 		myBuild = new SystemConfig();
 		
-		
 		// creates main window
 		new StartWindow();
+
+		
 	}
 }
