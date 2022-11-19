@@ -14,14 +14,14 @@ public class Main
 	 * Can access this with myBuild.___
 	 */
 	static SystemConfig myBuild;
+	static StartWindow buildWindow;
 	
 	public static void main(String[] args) throws FileNotFoundException, InterruptedException 
 	{
 		myBuild = new SystemConfig();
 		
 		// creates main window
-		new StartWindow();
-
+		buildWindow = new StartWindow();
 		
 	}
 }

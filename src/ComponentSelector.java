@@ -25,23 +25,15 @@ public class ComponentSelector extends JFrame {
 	private JList<String> cList = new JList<String>();
 	private static JLabel imgLabel = new JLabel() ;
 	
-	private static void newIcon(String filepath) {
-		BufferedImage compImg = null;
-		Integer x,y,width, height = null;
-	    Double ratio = null;
-	    try { compImg = ImageIO.read(new File(filepath)); }
-	    catch (IOException e) { e.printStackTrace(); }   	    
-	    if(compImg.getHeight() > compImg.getWidth()) {
-	    	ratio = DIM_MAX/Double.valueOf(compImg.getHeight());
-	    }
-	    else { ratio = DIM_MAX/Double.valueOf(compImg.getWidth()); }
-	    width = (int)(ratio * compImg.getWidth());
-	    height = (int)(ratio * compImg.getHeight());
-	    x = (X_MAX - width)/2;
-	    y = (Y_MAX - height)/2;
- 	    Image compScaled = compImg.getScaledInstance(width,height, Image.SCALE_SMOOTH); 	
-	    imgLabel.setBounds(x,y,width,height);
-    	imgLabel.setIcon(new ImageIcon(compScaled));  
+	private static void setIcon(String filepath) {
+		
+//		Image compScaled = ImgScale.scale(filepath, DIM_MAX);
+		ImageIcon icon = ImgScale.newIcon(filepath, DIM_MAX);
+		Integer x = (X_MAX - icon.getIconWidth())/2;
+		Integer y = (Y_MAX - icon.getIconHeight())/2;
+	    imgLabel.setSize(icon.getIconWidth(),icon.getIconHeight());
+	    imgLabel.setLocation(x,y);
+    	imgLabel.setIcon(icon);  
 	}
 	
 	private class selectButtonListener implements ActionListener {
@@ -50,8 +42,14 @@ public class ComponentSelector extends JFrame {
 	    	  System.out.println("you clicked something!");
 	    	  System.out.println(selectedIdx);
 	    	  System.out.println(compArrList.get(selectedIdx).imageName);
+	    	 
+	    	  // TO-DO make agnostic
 	    	  Main.myBuild.setCPU((Processor) compArrList.get(selectedIdx));
 	    	  System.out.println(Main.myBuild.getCPU());
+	    	  String imgPath = "images/" + Main.myBuild.getCPU().imagePath + "/" + Main.myBuild.getCPU().imageName;
+	    	  Main.buildWindow.middleButtons[0].setIcon(ImgScale.newIcon(imgPath,100));
+
+	    	  
 	    	  f.dispose();
 	      }
 	}
@@ -72,7 +70,7 @@ public class ComponentSelector extends JFrame {
 	        	JList<?> list = (JList<?>) ev.getSource();
 	        	selectedIdx = list.getSelectedIndex();
 	        	String newImg = "images/" + compArrList.get(selectedIdx).getImagePath() + "/"+ compArrList.get(selectedIdx).getImageName();
-	        	newIcon(newImg);
+	        	setIcon(newImg);
 	        }
 	        else {       }
 		}
@@ -102,7 +100,9 @@ public class ComponentSelector extends JFrame {
 	    cList.setBounds(450,50,300,250);
 	    cList.addListSelectionListener(new selectListener(compArrList));
 	    
-	    newIcon(compImgPath);
+	    
+	    
+	    setIcon(compImgPath);
 	    
         f.add(cList);
 	    f.add(imgLabel);

@@ -68,7 +68,7 @@ public class StartWindow extends JFrame
 		/*
 		 * adding images to every button
 		 */
-		middleButtons[0] = new JButton(new ImageIcon("images/processors/default.jpg"));
+		middleButtons[0] = new JButton(ImgScale.newIcon("images/processors/default.jpg",100));
 	
 		// TODO this is a temporary for loop below, need to implement rest like above
 		for(int i = 1; i < 9; i++)
