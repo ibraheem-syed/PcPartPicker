@@ -1,15 +1,26 @@
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Main {
-	public static void main(String[] args) throws FileNotFoundException {
+/*
+ * Main file, sets up other relevant classes
+ */
+
+public class Main 
+{
+	/*
+	 * myBuild contains many important functions & lots of relevant data
+	 * Can access this with myBuild.___
+	 */
+	static SystemConfig myBuild;
+	
+	public static void main(String[] args) throws FileNotFoundException 
+	{
+		myBuild = new SystemConfig();
 		
-		SystemConfig myBuild = new SystemConfig();
-
-		ArrayList<Processor> CPUS = Processor.genSkus("datasheets/processors.csv");
-
-		new ComponentSelector(CPUS,myBuild);
-
+		
+		// creates main window
+		new StartWindow();
 	}
-
 }
