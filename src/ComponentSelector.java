@@ -10,8 +10,8 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+@SuppressWarnings("serial")
 public class ComponentSelector extends JFrame {
-	private static final long serialVersionUID = 1L;
 	final static Integer DIM_MAX = 300;
 	final static Integer X_MAX = 450;
 	final static Integer Y_MAX = 400;
@@ -111,7 +111,7 @@ public class ComponentSelector extends JFrame {
 	    f.add(imgLabel);
 	    f.add(selectButton);
 
-	    f.setSize(800,400);  
+	    f.setSize(800,440);  
 	    f.setResizable(false);
 	    f.setLayout(null);
 	    f.setLocationRelativeTo(null);
