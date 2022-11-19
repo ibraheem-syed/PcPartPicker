@@ -32,27 +32,11 @@ public class Processor extends Component {
 		imagePath = "processors";
 	}
 	
-	public static ArrayList<Processor> genSkus (String filepath) throws FileNotFoundException{
-		File file = new File(filepath);
-		System.out.println(filepath);
-		Scanner input = new Scanner(file);
+	public static ArrayList<Processor> genCPUS(String filepath) throws FileNotFoundException{
 		ArrayList<Processor> CPUS = new ArrayList<Processor>();
-		while (input.hasNextLine()) {
-		   CPUS.add(new Processor(input.nextLine().split(",")));
-		    
+		for (String s : Component.getInventoryList(filepath)) {
+			CPUS.add(new Processor(s.split(",")));
 		}	
-		input.close();
-		
-		for(Processor i : CPUS) {
-			System.out.println(i.manufacturer);
-			System.out.println(i.modelName);
-			System.out.println(i.cost);
-			System.out.println(i.imagePath);
-			System.out.println(i.clockSpeed);
-			System.out.println(i.coreCount);
-			System.out.println(i.socketPinCount);
-			System.out.println();
-		}
 	return CPUS;
 	}
 }

@@ -21,7 +21,7 @@ public class ComponentSelector extends JFrame {
 	
 	private String compImgPath;
 	private JButton selectButton = new JButton();
-	private JFrame f = new JFrame();
+	public JFrame f = new JFrame();
 	private JList<String> cList = new JList<String>();
 	private static JLabel imgLabel = new JLabel() ;
 	
@@ -42,18 +42,23 @@ public class ComponentSelector extends JFrame {
  	    Image compScaled = compImg.getScaledInstance(width,height, Image.SCALE_SMOOTH); 	
 	    imgLabel.setBounds(x,y,width,height);
     	imgLabel.setIcon(new ImageIcon(compScaled));  
-		System.out.println(filepath);
 	}
 	
 	private class selectButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e)
 	      { 
 	    	  System.out.println("you clicked something!");
+	    	  System.out.println(selectedIdx);
+	    	  System.out.println(compArrList.get(selectedIdx).imageName);
+	    	  Main.myBuild.setCPU((Processor) compArrList.get(selectedIdx));
+	    	  System.out.println(Main.myBuild.getCPU());
+	    	  f.dispose();
 	      }
 	}
 	
 	private class selectListener implements ListSelectionListener {
 
+		@SuppressWarnings("unused")
 		public ArrayList<? extends Component> listenComps;
 		
 		selectListener(ArrayList<? extends Component> listenComps){
@@ -66,19 +71,12 @@ public class ComponentSelector extends JFrame {
 	        if (!adjust) {
 	        	JList<?> list = (JList<?>) ev.getSource();
 	        	selectedIdx = list.getSelectedIndex();
-//	        	System.out.println(listenComps.get(selectedIdx).modelName);
-//	        	System.out.println(listenComps.get(selectedIdx).imagePath);
 	        	String newImg = "images/" + compArrList.get(selectedIdx).getImagePath() + "/"+ compArrList.get(selectedIdx).getImageName();
-//	        	System.out.println(newImg);	
 	        	newIcon(newImg);
 	        }
 	        else {       }
 		}
 	}
-	
-
-	
-
 	
 	private static JList<String> genCompList(ArrayList<? extends Component> compArrList) {
 	    
@@ -91,13 +89,12 @@ public class ComponentSelector extends JFrame {
 	    compList.setSelectedIndex(0);
 		return compList;
 	}
-	
  
 	ComponentSelector(ArrayList<? extends Component> cArrList, SystemConfig myConfig) {  
 		compArrList = cArrList;
 		compArrList.sort((o1, o2) -> o1.cost.compareTo(o2.cost));
 		compImgPath = "images/" + compArrList.get(0).getImagePath() + "/"+ compArrList.get(0).getImageName();
-	    System.out.println(compImgPath);	   
+		selectButton.addActionListener(new selectButtonListener());
 	    selectButton.setText("Select");
 	    selectButton.setBounds(550,325,100,50);
 	      
@@ -116,7 +113,6 @@ public class ComponentSelector extends JFrame {
 	    f.setLayout(null);
 	    f.setLocationRelativeTo(null);
 	    f.setVisible(true);  
-
 	}
 	
 }

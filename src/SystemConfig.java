@@ -17,15 +17,15 @@ public class SystemConfig
 	private ArrayList<Processor> cpuInventory;
 	
 	SystemConfig()throws FileNotFoundException {
-		cpuInventory = Processor.genSkus("datasheets/processors.csv");
+		cpuInventory = Processor.genCPUS("datasheets/processors.csv");
 	}
 	
 	public Processor getCPU() {
 		return CPU;
 	}
 
-	public void setCPU(Processor cPU) {
-		CPU = cPU;
+	public void setCPU(Processor cpu) {
+		CPU = cpu;
 	}
 	
 	public ArrayList<Processor> getCPUList() 
