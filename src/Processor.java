@@ -1,7 +1,5 @@
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /*
  * Processor specs class, holds info about individual processors
