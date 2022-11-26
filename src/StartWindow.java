@@ -69,12 +69,25 @@ public class StartWindow extends JFrame
 		 * adding images to every button
 		 */
 		middleButtons[0] = new JButton(ImgScale.newIcon("images/processors/default.jpg",100));
-	
-		// TODO this is a temporary for loop below, need to implement rest like above
-		for(int i = 1; i < 9; i++)
-		{
-			middleButtons[i] = new JButton("temp");
-		}
+		middleButtons[0].setActionCommand("CPU");
+		middleButtons[1] = new JButton(ImgScale.newIcon("images/motherboards/default.jpg",100));
+		middleButtons[1].setActionCommand("MB");
+		middleButtons[2] = new JButton(ImgScale.newIcon("images/memory/default.jpg",100));
+		middleButtons[2].setActionCommand("RAM");
+				
+		middleButtons[3] = new JButton("CASE");
+		middleButtons[3].setActionCommand("CASE");
+		middleButtons[4] = new JButton("PSU");
+		middleButtons[4].setActionCommand("PSU");
+		middleButtons[5] = new JButton("GPU");
+		middleButtons[5].setActionCommand("GPU");
+		
+		middleButtons[6] = new JButton("HDD");
+		middleButtons[6].setActionCommand("HDD");
+		middleButtons[7] = new JButton("KB");
+		middleButtons[7].setActionCommand("KB");
+		middleButtons[8] = new JButton("MOUSE");
+		middleButtons[8].setActionCommand("MOUSE");
 		
 		for(int i = 0; i < 9; i++)
 		{
@@ -96,18 +109,32 @@ public class StartWindow extends JFrame
 			/*
 			 * done, should calculate
 			 */
-			if(e.getSource() == finalButton)
-			{
-				//TODO
-				System.out.println(Main.myBuild.getCPU().modelName);
-			}
-			/*
-			 * processor
-			 */
-			else if(e.getSource() == middleButtons[0])
-			{
+			
+			switch(e.getActionCommand()) {
+			case "CPU":
 				new ComponentSelector(Main.myBuild.getCPUList(),Main.myBuild);
+				break;
+			case "MB":
+				new ComponentSelector(Main.myBuild.getMBList(),Main.myBuild);
+				break;
+
+			case "RAM":
+				new ComponentSelector(Main.myBuild.getRAMList(),Main.myBuild);
+				break;
 			}
+		
+//			if( == finalButton)
+//			{
+//				//TODO
+//				System.out.println(Main.myBuild.getCPU().modelName);
+//			}
+//			/*
+//			 * processor
+//			 */
+//			else if(e.getSource() == middleButtons[0])
+//			{
+//				new ComponentSelector(Main.myBuild.getCPUList(),Main.myBuild);
+//			}
 			
 			//TODO
 		}

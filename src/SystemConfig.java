@@ -14,10 +14,16 @@ public class SystemConfig
 	 * List of currently selected objects
 	 */
 	private Processor CPU;
+	private Motherboard MB;
+	private Memory RAM;
 	private ArrayList<Processor> cpuInventory;
+	private ArrayList<Motherboard> mbInventory;
+	private ArrayList<Memory> ramInventory;
 	
 	SystemConfig()throws FileNotFoundException {
 		cpuInventory = Processor.genCPUS("datasheets/processors.csv");
+		mbInventory = Motherboard.genMBS("datasheets/motherboards.csv");
+		ramInventory = Memory.genRAMS("datasheets/memory.csv");
 	}
 	
 	public Processor getCPU() {
@@ -31,5 +37,32 @@ public class SystemConfig
 	public ArrayList<Processor> getCPUList() 
 	{
 		return cpuInventory;
+	}
+	
+	
+	public Motherboard getMB() {
+		return MB;
+	}
+
+	public void setCPU(Motherboard mb) {
+		MB = mb;
+	}
+	
+	public ArrayList<Motherboard> getMBList() 
+	{
+		return mbInventory;
+	}
+	
+	public Memory getRAM() {
+		return RAM;
+	}
+
+	public void setRAM(Memory ram) {
+		RAM = ram;
+	}
+	
+	public ArrayList<Memory> getRAMList() 
+	{
+		return ramInventory;
 	}
 }
