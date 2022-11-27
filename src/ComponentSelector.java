@@ -16,7 +16,7 @@ public class ComponentSelector extends JFrame {
 	final static Integer X_MAX = 450;
 	final static Integer Y_MAX = 400;
 	
-	private Integer selectedIdx;
+	private Integer selectedIdx = 0;
 	private ArrayList<? extends Component> compArrList;
 	
 	private String compImgPath;
@@ -26,8 +26,6 @@ public class ComponentSelector extends JFrame {
 	private static JLabel imgLabel = new JLabel() ;
 	
 	private static void setIcon(String filepath) {
-		
-//		Image compScaled = ImgScale.scale(filepath, DIM_MAX);
 		ImageIcon icon = ImgScale.newIcon(filepath, DIM_MAX);
 		Integer x = (X_MAX - icon.getIconWidth())/2;
 		Integer y = (Y_MAX - icon.getIconHeight())/2;
@@ -38,18 +36,24 @@ public class ComponentSelector extends JFrame {
 	
 	private class selectButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e)
-	      { 
-	    	  System.out.println("you clicked something!");
-	    	  System.out.println(selectedIdx);
-	    	  System.out.println(compArrList.get(selectedIdx).imageName);
-	    	 
-	    	  // TO-DO make agnostic
-	    	  Main.myBuild.setCPU((Processor) compArrList.get(selectedIdx));
-	    	  System.out.println(Main.myBuild.getCPU());
-	    	  String imgPath = "images/" + Main.myBuild.getCPU().imagePath + "/" + Main.myBuild.getCPU().imageName;
-	    	  Main.buildWindow.middleButtons[0].setIcon(ImgScale.newIcon(imgPath,100));
-
-	    	  
+	      {    	  
+	    	  Integer idx = 0;
+	    	  String imgPath = "images/" + compArrList.get(selectedIdx).imagePath + "/" + compArrList.get(selectedIdx).imageName;
+	    	  switch(StartWindow.getCurrentComp()) {
+		    	  case "CPU":
+		    		  Main.myBuild.setCPU((Processor) compArrList.get(selectedIdx));
+		    		  idx = 0;
+		    		  break;
+		    	  case "MB":
+		    		  Main.myBuild.setMB((Motherboard) compArrList.get(selectedIdx));
+		    		  idx = 1;
+		    		  break;
+		    	  case "RAM":
+		    		  Main.myBuild.setRAM((Memory) compArrList.get(selectedIdx));
+		    		  idx = 2;
+		    		  break;
+	    	  }
+	    	  Main.buildWindow.middleButtons[idx].setIcon(ImgScale.newIcon(imgPath,100));
 	    	  f.dispose();
 	      }
 	}
@@ -99,8 +103,6 @@ public class ComponentSelector extends JFrame {
 	    cList = genCompList(compArrList);
 	    cList.setBounds(450,50,300,250);
 	    cList.addListSelectionListener(new selectListener(compArrList));
-	    
-	    
 	    
 	    setIcon(compImgPath);
 	    

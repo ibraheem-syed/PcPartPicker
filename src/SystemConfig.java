@@ -44,7 +44,7 @@ public class SystemConfig
 		return MB;
 	}
 
-	public void setCPU(Motherboard mb) {
+	public void setMB(Motherboard mb) {
 		MB = mb;
 	}
 	

@@ -24,7 +24,12 @@ public class StartWindow extends JFrame
 	JPanel centerPanel;
 	JButton finalButton;
 	JButton temp;
-		
+	private static String currentComp;
+	
+	public static String getCurrentComp() {
+		return currentComp;
+	}
+
 	/*
 	 * Constructor creates main window
 	 */
@@ -109,8 +114,8 @@ public class StartWindow extends JFrame
 			/*
 			 * done, should calculate
 			 */
-			
-			switch(e.getActionCommand()) {
+			currentComp = e.getActionCommand();
+			switch(currentComp) {
 			case "CPU":
 				new ComponentSelector(Main.myBuild.getCPUList(),Main.myBuild);
 				break;
