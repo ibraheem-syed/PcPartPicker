@@ -8,24 +8,25 @@ import java.util.ArrayList;
  */
 
 public class Motherboard extends Component {
-	public Integer socketPinCount;
-	public String memoryType;
-	public String formFactor;
+	public SystemConfig.pinCount socketPinCount;
+	public SystemConfig.ram memoryType;
+	public SystemConfig.formFactor formFactor;
 	
 	Motherboard(){
 		super();
 		cost = 0.0;
-		socketPinCount = 462;
-		formFactor = "ATX";
+		memoryType = SystemConfig.ram.DEFAULT;
+		socketPinCount = SystemConfig.pinCount.DEFAULT;
+		formFactor = SystemConfig.formFactor.DEFAULT;
 		imagePath = "motherboards";
 	}
 	
 	//Processor(String man, String mod, String img, String price, String pins, String mem, String ff){
 	Motherboard(String specs[]){
 		super(specs[0],specs[1],specs[2],specs[3]);
-		socketPinCount = Integer.valueOf(specs[4]);
-		memoryType = specs[5];
-		formFactor = specs[6];
+		socketPinCount = SystemConfig.pinCount.valueOf(specs[4]);
+		memoryType = SystemConfig.ram.valueOf(specs[5]);
+		formFactor = SystemConfig.formFactor.valueOf(specs[6]);
 		imagePath = "motherboards";
 
 	}

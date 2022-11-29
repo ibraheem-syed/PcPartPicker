@@ -10,14 +10,14 @@ import java.util.ArrayList;
 public class Processor extends Component {
 	public Double clockSpeed;
 	public Integer coreCount;
-	public Integer socketPinCount;
+	public SystemConfig.pinCount socketPinCount;
 	
 	Processor(){
 		super();
 		cost = 0.0;
 		clockSpeed = 1.0;
 		coreCount = 8;
-		socketPinCount = 775;
+		socketPinCount = SystemConfig.pinCount.DEFAULT;
 		imagePath = "processors";
 	}
 	
@@ -26,7 +26,7 @@ public class Processor extends Component {
 		super(specs[0],specs[1],specs[2],specs[3]);
 		clockSpeed = Double.valueOf(specs[4]);
 		coreCount = Integer.valueOf(specs[5]);
-		socketPinCount = Integer.valueOf(specs[6]);
+		socketPinCount = SystemConfig.pinCount.valueOf(specs[6]);
 		imagePath = "processors";
 	}
 	

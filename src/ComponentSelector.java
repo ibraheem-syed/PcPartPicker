@@ -37,23 +37,35 @@ public class ComponentSelector extends JFrame {
 	private class selectButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e)
 	      {    	  
+
 	    	  Integer idx = 0;
 	    	  String imgPath = "images/" + compArrList.get(selectedIdx).imagePath + "/" + compArrList.get(selectedIdx).imageName;
 	    	  switch(StartWindow.getCurrentComp()) {
 		    	  case "CPU":
-		    		  Main.myBuild.setCPU((Processor) compArrList.get(selectedIdx));
 		    		  idx = 0;
+		    		  Main.myBuild.setCPU((Processor) compArrList.get(selectedIdx));
+		    		  Main.myBuild.setPinC(Main.myBuild.getCPU().socketPinCount);
+		    		  System.out.println(Main.myBuild.getPinC());
 		    		  break;
 		    	  case "MB":
-		    		  Main.myBuild.setMB((Motherboard) compArrList.get(selectedIdx));
 		    		  idx = 1;
+		    		  Main.myBuild.setMB((Motherboard) compArrList.get(selectedIdx));
+		    		  Main.myBuild.setFormF(Main.myBuild.getMB().formFactor);
+		    		  Main.myBuild.setPinC(Main.myBuild.getMB().socketPinCount);
+		    		  Main.myBuild.setDdrX(Main.myBuild.getMB().memoryType);
+		    		  System.out.println(Main.myBuild.getFormF());
+		    		  System.out.println(Main.myBuild.getPinC());
+		    		  System.out.println(Main.myBuild.getDdrX());
 		    		  break;
 		    	  case "RAM":
-		    		  Main.myBuild.setRAM((Memory) compArrList.get(selectedIdx));
 		    		  idx = 2;
+		    		  Main.myBuild.setRAM((Memory) compArrList.get(selectedIdx));
+		    		  Main.myBuild.setDdrX(Main.myBuild.getRAM().memoryType);
+		    		  System.out.println(Main.myBuild.getDdrX());
 		    		  break;
 	    	  }
 	    	  Main.buildWindow.middleButtons[idx].setIcon(ImgScale.newIcon(imgPath,100));
+	    	      	  	    	  
 	    	  f.dispose();
 	      }
 	}
