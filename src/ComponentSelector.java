@@ -45,7 +45,7 @@ public class ComponentSelector extends JFrame {
 		    		  idx = 0;
 		    		  Main.myBuild.setCPU((Processor) compArrList.get(selectedIdx));
 		    		  Main.myBuild.setPinC(Main.myBuild.getCPU().socketPinCount);
-		    		  System.out.println(Main.myBuild.getPinC());
+		    		  CompatabilityCheck.cpu((Processor) compArrList.get(selectedIdx));
 		    		  break;
 		    	  case "MB":
 		    		  idx = 1;
@@ -53,15 +53,13 @@ public class ComponentSelector extends JFrame {
 		    		  Main.myBuild.setFormF(Main.myBuild.getMB().formFactor);
 		    		  Main.myBuild.setPinC(Main.myBuild.getMB().socketPinCount);
 		    		  Main.myBuild.setDdrX(Main.myBuild.getMB().memoryType);
-		    		  System.out.println(Main.myBuild.getFormF());
-		    		  System.out.println(Main.myBuild.getPinC());
-		    		  System.out.println(Main.myBuild.getDdrX());
+		    		  CompatabilityCheck.mb((Motherboard) compArrList.get(selectedIdx));
 		    		  break;
 		    	  case "RAM":
 		    		  idx = 2;
 		    		  Main.myBuild.setRAM((Memory) compArrList.get(selectedIdx));
 		    		  Main.myBuild.setDdrX(Main.myBuild.getRAM().memoryType);
-		    		  System.out.println(Main.myBuild.getDdrX());
+		    		  CompatabilityCheck.ram((Memory) compArrList.get(selectedIdx));
 		    		  break;
 	    	  }
 	    	  Main.buildWindow.middleButtons[idx].setIcon(ImgScale.newIcon(imgPath,100));
