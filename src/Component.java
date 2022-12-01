@@ -20,8 +20,8 @@ public abstract class Component
 	Component()
 	{	
 		manufacturer = "manufacturer";
-		modelName = "model";
-		imageName = "image.jpg";
+		modelName = "DEFAULT";
+		imageName = "default.jpg";
 		cost = 0.0;
 	}
 	

@@ -37,33 +37,17 @@ public class ComponentSelector extends JFrame {
 	private class selectButtonListener implements ActionListener {
 	      public void actionPerformed(ActionEvent e)
 	      {    	  
-
-	    	  Integer idx = 0;
-	    	  String imgPath = "images/" + compArrList.get(selectedIdx).imagePath + "/" + compArrList.get(selectedIdx).imageName;
 	    	  switch(StartWindow.getCurrentComp()) {
 		    	  case "CPU":
-		    		  idx = 0;
-		    		  Main.myBuild.setCPU((Processor) compArrList.get(selectedIdx));
-		    		  Main.myBuild.setPinC(Main.myBuild.getCPU().socketPinCount);
 		    		  CompatabilityCheck.cpu((Processor) compArrList.get(selectedIdx));
 		    		  break;
 		    	  case "MB":
-		    		  idx = 1;
-		    		  Main.myBuild.setMB((Motherboard) compArrList.get(selectedIdx));
-		    		  Main.myBuild.setFormF(Main.myBuild.getMB().formFactor);
-		    		  Main.myBuild.setPinC(Main.myBuild.getMB().socketPinCount);
-		    		  Main.myBuild.setDdrX(Main.myBuild.getMB().memoryType);
 		    		  CompatabilityCheck.mb((Motherboard) compArrList.get(selectedIdx));
 		    		  break;
 		    	  case "RAM":
-		    		  idx = 2;
-		    		  Main.myBuild.setRAM((Memory) compArrList.get(selectedIdx));
-		    		  Main.myBuild.setDdrX(Main.myBuild.getRAM().memoryType);
 		    		  CompatabilityCheck.ram((Memory) compArrList.get(selectedIdx));
 		    		  break;
-	    	  }
-	    	  Main.buildWindow.middleButtons[idx].setIcon(ImgScale.newIcon(imgPath,100));
-	    	      	  	    	  
+	    	  }    	  
 	    	  f.dispose();
 	      }
 	}
@@ -97,7 +81,7 @@ public class ComponentSelector extends JFrame {
 	    	defaultList.addElement("$" + String.format("%.2f", i.cost)+ 
 	    			" - " + i.manufacturer + ", " + i.modelName);
 	    }
-	    JList<String> compList = new JList<>(defaultList); 
+	    JList<String> compList = new JList<>(defaultList);
 	    compList.setSelectedIndex(0);
 		return compList;
 	}

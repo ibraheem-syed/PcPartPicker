@@ -8,19 +8,19 @@ import java.util.ArrayList;
  */
 
 public class Memory extends Component {
-	public SystemConfig.ram memoryType;
+	public String memoryType;
 	
 	Memory(){
 		super();
 		cost = 0.0;
-		memoryType = SystemConfig.ram.DEFAULT;
+		memoryType = "DEFAULT";
 		imagePath = "memory";
 	}
 	
 	//Processor(String man, String mod, String img, String price, String ddr){
 	Memory(String specs[]){
 		super(specs[0],specs[1],specs[2],specs[3]);
-		memoryType = SystemConfig.ram.valueOf(specs[4]);
+		memoryType = specs[4];
 		imagePath = "memory";
 
 	}

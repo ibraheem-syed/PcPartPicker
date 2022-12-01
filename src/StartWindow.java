@@ -73,11 +73,12 @@ public class StartWindow extends JFrame
 		/*
 		 * adding images to every button
 		 */
-		middleButtons[0] = new JButton(ImgScale.newIcon("images/processors/default.jpg",100));
+
+		middleButtons[0] = new JButton(ImgScale.newIcon("images/" + Main.myBuild.getCPU().imagePath + "/" + Main.myBuild.getCPU().imageName,100));
 		middleButtons[0].setActionCommand("CPU");
-		middleButtons[1] = new JButton(ImgScale.newIcon("images/motherboards/default.jpg",100));
+		middleButtons[1] = new JButton(ImgScale.newIcon("images/" + Main.myBuild.getMB().imagePath + "/" + Main.myBuild.getMB().imageName,100));
 		middleButtons[1].setActionCommand("MB");
-		middleButtons[2] = new JButton(ImgScale.newIcon("images/memory/default.jpg",100));
+		middleButtons[2] = new JButton(ImgScale.newIcon("images/" + Main.myBuild.getRAM().imagePath + "/" + Main.myBuild.getRAM().imageName,100));
 		middleButtons[2].setActionCommand("RAM");
 				
 		middleButtons[3] = new JButton("CASE");
@@ -133,15 +134,7 @@ public class StartWindow extends JFrame
 //				//TODO
 //				System.out.println(Main.myBuild.getCPU().modelName);
 //			}
-//			/*
-//			 * processor
-//			 */
-//			else if(e.getSource() == middleButtons[0])
-//			{
-//				new ComponentSelector(Main.myBuild.getCPUList(),Main.myBuild);
-//			}
-			
-			//TODO
+
 		}
 	}
 }

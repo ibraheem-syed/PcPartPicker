@@ -14,39 +14,6 @@ public class SystemConfig
 	 * List of currently selected objects
 	 */
 	
-	
-	enum formFactor { DEFAULT,ITX,MATX,ATX };
-	enum pinCount { DEFAULT,PGA1331,LGA1700,LGA1718 }
-	enum ram { DEFAULT,DDR4,DDR5 }
-	
-	private formFactor formF;
-	private pinCount pinC;
-	private ram ddrX;
-	
-	public void setFormF(formFactor formF) {
-		this.formF = formF;
-	}
-
-	public void setPinC(pinCount pinC) {
-		this.pinC = pinC;
-	}
-
-	public void setDdrX(ram ddrX) {
-		this.ddrX = ddrX;
-	}
-
-	public formFactor getFormF() {
-		return formF;
-	}
-
-	public pinCount getPinC() {
-		return pinC;
-	}
-
-	public ram getDdrX() {
-		return ddrX;
-	}
-
 	private Processor CPU;
 	private Motherboard MB;
 	private Memory RAM;
@@ -55,15 +22,27 @@ public class SystemConfig
 	private ArrayList<Memory> ramInventory;
 	
 	SystemConfig()throws FileNotFoundException {
-		formF = formFactor.DEFAULT;
-		pinC = pinCount.DEFAULT;
-		ddrX = ram.DEFAULT;
-		
 		cpuInventory = Processor.genCPUS("datasheets/processors.csv");
 		mbInventory = Motherboard.genMBS("datasheets/motherboards.csv");
 		ramInventory = Memory.genRAMS("datasheets/memory.csv");
+		
+		CPU = new Processor();
+		MB = new Motherboard();
+		RAM = new Memory();
 	}
 	
+	public ArrayList<Motherboard> getMBList() {
+		return mbInventory;
+	}
+	
+	public ArrayList<Memory> getRAMList() {
+		return ramInventory;
+	}
+	
+	public ArrayList<Processor> getCPUList() {
+		return cpuInventory;
+	}
+		
 	public Processor getCPU() {
 		return CPU;
 	}
@@ -72,12 +51,6 @@ public class SystemConfig
 		CPU = cpu;
 	}
 	
-	public ArrayList<Processor> getCPUList() 
-	{
-		return cpuInventory;
-	}
-	
-	
 	public Motherboard getMB() {
 		return MB;
 	}
@@ -85,12 +58,7 @@ public class SystemConfig
 	public void setMB(Motherboard mb) {
 		MB = mb;
 	}
-	
-	public ArrayList<Motherboard> getMBList() 
-	{
-		return mbInventory;
-	}
-	
+
 	public Memory getRAM() {
 		return RAM;
 	}
@@ -98,9 +66,5 @@ public class SystemConfig
 	public void setRAM(Memory ram) {
 		RAM = ram;
 	}
-	
-	public ArrayList<Memory> getRAMList() 
-	{
-		return ramInventory;
-	}
+
 }
