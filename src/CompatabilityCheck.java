@@ -1,7 +1,14 @@
-import javax.swing.JFrame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class CompatabilityCheck extends JFrame {
+	
+	static JFrame f = new JFrame();
+	static JButton reset = new JButton();
+	static JButton cancel = new JButton();
 	
 	public static void cpu(Processor proc) {
 		String imgPath = "images/" + Main.myBuild.getCPU().imagePath + "/" + Main.myBuild.getCPU().imageName;	
@@ -9,19 +16,17 @@ public class CompatabilityCheck extends JFrame {
 			Main.myBuild.getMB().socketPinCount.equals("DEFAULT") ||
 			Main.myBuild.getMB().socketPinCount.equals(proc.socketPinCount)
 		)
-			
 		{
 			Main.myBuild.setCPU(proc);
 			imgPath = "images/" + proc.imagePath + "/" + proc.imageName;	
 			System.out.println(Main.myBuild.getMB().socketPinCount);
+			Main.buildWindow.middleButtons[0].setIcon(ImgScale.newIcon(imgPath,100));
 		}
 		else {
-			
 			CompatibilityCheck();
 			System.out.println("doing nothing");
-
 		}
-		Main.buildWindow.middleButtons[0].setIcon(ImgScale.newIcon(imgPath,100));
+		
 	}
 	
 	public static void mb(Motherboard mobo) {
@@ -42,7 +47,8 @@ public class CompatabilityCheck extends JFrame {
 
 		{
 			Main.myBuild.setMB(mobo);
-			imgPath = "images/" + mobo.imagePath + "/" + mobo.imageName;			
+			imgPath = "images/" + mobo.imagePath + "/" + mobo.imageName;
+			Main.buildWindow.middleButtons[1].setIcon(ImgScale.newIcon(imgPath,100));
 		}
 		
 		else {
@@ -52,7 +58,6 @@ public class CompatabilityCheck extends JFrame {
 
 		}
 
-		Main.buildWindow.middleButtons[1].setIcon(ImgScale.newIcon(imgPath,100));
 	}
 	
 
@@ -67,6 +72,8 @@ public class CompatabilityCheck extends JFrame {
 		{
 			Main.myBuild.setRAM(ddr);
 			imgPath = "images/" + ddr.imagePath + "/" + ddr.imageName;
+			Main.buildWindow.middleButtons[2].setIcon(ImgScale.newIcon(imgPath,100));
+			
 		}
 			
 		else {
@@ -76,12 +83,56 @@ public class CompatabilityCheck extends JFrame {
 
 		}
 
-		
-		Main.buildWindow.middleButtons[2].setIcon(ImgScale.newIcon(imgPath,100));
 	}
 	
-
-	public static void CompatibilityCheck() {
-		System.out.println("not compatible");
+	private static class ButtonListener implements ActionListener
+	{
+		public void actionPerformed (ActionEvent e)
+		{
+			
+	    	  switch(e.getActionCommand()) {
+	    	  case "RESET":
+	    		  System.out.println("reset");
+	    		  Main.myBuild.setCPU(new Processor());
+	    		  Main.myBuild.setMB(new Motherboard());
+	    		  Main.myBuild.setRAM(new Memory());
+	    		  Main.buildWindow.middleButtons[0].setIcon(ImgScale.newIcon("images/" + Main.myBuild.getCPU().imagePath + "/" + Main.myBuild.getCPU().imageName,100));
+	    		  Main.buildWindow.middleButtons[1].setIcon(ImgScale.newIcon("images/" + Main.myBuild.getMB().imagePath + "/" + Main.myBuild.getMB().imageName,100));
+	    		  Main.buildWindow.middleButtons[2].setIcon(ImgScale.newIcon("images/" + Main.myBuild.getRAM().imagePath + "/" + Main.myBuild.getRAM().imageName,100));	    		  
+	    		  break;
+	    	  case "CANCEL":
+	    		  System.out.println("cancel");
+	    		  break;
+	    	  }    	  
+	    	  
+	    	  f.dispose();
+		}
 	}
+	
+	private static void CompatibilityCheck() {
+		
+		reset.setText("Reset");
+	    reset.setBounds(100,120,100,40);
+	    reset.addActionListener(new ButtonListener());
+	    reset.setActionCommand("RESET");
+	    
+		cancel.setText("Cancel");
+	    cancel.setBounds(400,120,100,40);
+	    cancel.addActionListener(new ButtonListener());
+	    cancel.setActionCommand("CANCEL");
+	    
+	    f.add(reset);
+	    f.add(cancel);
+		
+		f.setSize(600,200);
+		f.setTitle("Compatbility Check");
+		f.setResizable(false);
+		f.setLayout(null);
+		f.setLocationRelativeTo(null);
+		f.setVisible(true);
+		
+		System.out.println("not compatible");
+		
+	}
+
 }
