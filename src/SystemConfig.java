@@ -31,7 +31,7 @@ public class SystemConfig
 //	private ArrayList<Keyboard> keyboardInventory;
 //	private ArrayList<PowerSupply> powerInventory;
 //	private ArrayList<Storage> storageInventory;
-//	private ArrayList<Graphics> gpuInventory;
+	private ArrayList<Graphics> gpuInventory;
 	
 	SystemConfig()throws FileNotFoundException {
 		cpuInventory = Processor.genCPUS("datasheets/processors.csv");
@@ -42,7 +42,7 @@ public class SystemConfig
 //		keyboardInventory = Keyboard.genKBS("datasheets/keyboards.csv");
 //		powerInventory = PowerSupply.genPSUS("datasheets/powersupplies.csv");
 //		storageInventory = Storage.genHDDS("datasheets/storages.csv");
-//		gpuInventory = Graphics.genGPUS("datasheets/gpus.csv");
+		gpuInventory = Graphics.genGPUS("datasheets/gpus.csv");
 		
 		CPU = new Processor();
 		MB = new Motherboard();
@@ -94,10 +94,10 @@ public class SystemConfig
 //	public ArrayList<Storage> getStorageList() {
 //		return storageInventory;
 //	}
-//	
-//	public ArrayList<Graphics> getGPUList() {
-//		return gpuInventory;
-//	}
+	
+	public ArrayList<Graphics> getGPUList() {
+		return gpuInventory;
+	}
 	
 	public Processor getCPU() {
 		return CPU;

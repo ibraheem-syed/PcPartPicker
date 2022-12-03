@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -74,24 +75,40 @@ public class StartWindow extends JFrame
 		 * adding images to every button
 		 */
 
-		middleButtons[0] = new JButton(ImgScale.newIcon("images/" + Main.myBuild.getCPU().imagePath + "/" + Main.myBuild.getCPU().imageName,100));
+		middleButtons[0] = new JButton("CPU",ImgScale.newIcon("images/" + Main.myBuild.getCPU().imagePath + "/" + Main.myBuild.getCPU().imageName,100));
 		middleButtons[0].setActionCommand("CPU");
-		middleButtons[1] = new JButton(ImgScale.newIcon("images/" + Main.myBuild.getMB().imagePath + "/" + Main.myBuild.getMB().imageName,100));
+		middleButtons[0].setVerticalTextPosition(SwingConstants.BOTTOM);
+		middleButtons[0].setHorizontalTextPosition(SwingConstants.CENTER);
+		
+		middleButtons[1] = new JButton("MB",ImgScale.newIcon("images/" + Main.myBuild.getMB().imagePath + "/" + Main.myBuild.getMB().imageName,100));
 		middleButtons[1].setActionCommand("MB");
-		middleButtons[2] = new JButton(ImgScale.newIcon("images/" + Main.myBuild.getRAM().imagePath + "/" + Main.myBuild.getRAM().imageName,100));
+		middleButtons[1].setVerticalTextPosition(SwingConstants.BOTTOM);
+		middleButtons[1].setHorizontalTextPosition(SwingConstants.CENTER);
+		
+		middleButtons[2] = new JButton("RAM",ImgScale.newIcon("images/" + Main.myBuild.getRAM().imagePath + "/" + Main.myBuild.getRAM().imageName,100));
 		middleButtons[2].setActionCommand("RAM");
+		middleButtons[2].setVerticalTextPosition(SwingConstants.BOTTOM);
+		middleButtons[2].setHorizontalTextPosition(SwingConstants.CENTER);
 				
-		middleButtons[3] = new JButton(ImgScale.newIcon("images/" + Main.myBuild.getCase().imagePath + "/" + Main.myBuild.getCase().imageName,100));
+		middleButtons[3] = new JButton("CASE",ImgScale.newIcon("images/" + Main.myBuild.getCase().imagePath + "/" + Main.myBuild.getCase().imageName,100));
 		middleButtons[3].setActionCommand("CASE");
+		middleButtons[3].setVerticalTextPosition(SwingConstants.BOTTOM);
+		middleButtons[3].setHorizontalTextPosition(SwingConstants.CENTER);
+		
 		middleButtons[4] = new JButton("PSU");
 		middleButtons[4].setActionCommand("PSU");
-		middleButtons[5] = new JButton("GPU");
+		
+		middleButtons[5] = new JButton("GPU",ImgScale.newIcon("images/" + Main.myBuild.getGPU().imagePath + "/" + Main.myBuild.getGPU().imageName,100));
 		middleButtons[5].setActionCommand("GPU");
+		middleButtons[5].setVerticalTextPosition(SwingConstants.BOTTOM);
+		middleButtons[5].setHorizontalTextPosition(SwingConstants.CENTER);
 		
 		middleButtons[6] = new JButton("HDD");
 		middleButtons[6].setActionCommand("HDD");
+		
 		middleButtons[7] = new JButton("KB");
 		middleButtons[7].setActionCommand("KB");
+		
 		middleButtons[8] = new JButton("MOUSE");
 		middleButtons[8].setActionCommand("MOUSE");
 		
@@ -129,6 +146,9 @@ public class StartWindow extends JFrame
 				break;
 			case "CASE":
 				new ComponentSelector(Main.myBuild.getCaseList(),Main.myBuild);
+				break;
+			case "GPU":
+				new ComponentSelector(Main.myBuild.getGPUList(),Main.myBuild);
 				break;
 			}
 

@@ -35,8 +35,9 @@ public class ComponentSelector extends JFrame {
 	}
 	
 	private class selectButtonListener implements ActionListener {
-	      public void actionPerformed(ActionEvent e)
+	      public void actionPerformed(ActionEvent e) 
 	      {    	  
+	    	  String imgPath;
 	    	  switch(StartWindow.getCurrentComp()) {
 		    	  case "CPU":
 		    		  CompatabilityCheck.cpu((Processor) compArrList.get(selectedIdx));
@@ -50,8 +51,16 @@ public class ComponentSelector extends JFrame {
 		    	  case "CASE":
 		    		  Case myCase = (Case)compArrList.get(selectedIdx);
 		    		  Main.myBuild.setCase(myCase);
-		              String imgPath = "images/" + myCase.imagePath + "/" + myCase.imageName;
-		              Main.buildWindow.middleButtons[3].setIcon(ImgScale.newIcon(imgPath,100)); 
+		              imgPath = "images/" + myCase.imagePath + "/" + myCase.imageName;
+		              Main.buildWindow.middleButtons[3].setIcon(ImgScale.newIcon(imgPath,100));
+		    		  break;
+		    	  case "GPU":
+		    		  Graphics GPU = (Graphics)compArrList.get(selectedIdx);
+		    		  Main.myBuild.setGPU(GPU);
+		              imgPath = "images/" + GPU.imagePath + "/" + GPU.imageName;
+		              Main.buildWindow.middleButtons[5].setIcon(ImgScale.newIcon(imgPath,100)); 
+		    		  break;
+		              
 	    	  }    	  
 	    	  f.dispose();
 	      }

@@ -21,7 +21,7 @@ public abstract class Component
 	{	
 		manufacturer = "manufacturer";
 		modelName = "DEFAULT";
-		imageName = "default.jpg";
+		imageName = "default.png";
 		cost = 0.0;
 	}
 	
