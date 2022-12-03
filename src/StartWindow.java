@@ -81,7 +81,7 @@ public class StartWindow extends JFrame
 		middleButtons[2] = new JButton(ImgScale.newIcon("images/" + Main.myBuild.getRAM().imagePath + "/" + Main.myBuild.getRAM().imageName,100));
 		middleButtons[2].setActionCommand("RAM");
 				
-		middleButtons[3] = new JButton("CASE");
+		middleButtons[3] = new JButton(ImgScale.newIcon("images/" + Main.myBuild.getCase().imagePath + "/" + Main.myBuild.getCase().imageName,100));
 		middleButtons[3].setActionCommand("CASE");
 		middleButtons[4] = new JButton("PSU");
 		middleButtons[4].setActionCommand("PSU");
@@ -127,8 +127,11 @@ public class StartWindow extends JFrame
 			case "RAM":
 				new ComponentSelector(Main.myBuild.getRAMList(),Main.myBuild);
 				break;
+			case "CASE":
+				new ComponentSelector(Main.myBuild.getCaseList(),Main.myBuild);
+				break;
 			}
-		
+
 //			if( == finalButton)
 //			{
 //				//TODO

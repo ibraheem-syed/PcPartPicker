@@ -47,6 +47,11 @@ public class ComponentSelector extends JFrame {
 		    	  case "RAM":
 		    		  CompatabilityCheck.ram((Memory) compArrList.get(selectedIdx));
 		    		  break;
+		    	  case "CASE":
+		    		  Case myCase = (Case)compArrList.get(selectedIdx);
+		    		  Main.myBuild.setCase(myCase);
+		              String imgPath = "images/" + myCase.imagePath + "/" + myCase.imageName;
+		              Main.buildWindow.middleButtons[3].setIcon(ImgScale.newIcon(imgPath,100)); 
 	    	  }    	  
 	    	  f.dispose();
 	      }
