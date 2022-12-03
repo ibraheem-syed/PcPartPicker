@@ -17,7 +17,7 @@ public class Case extends Component{
 
 	}
 		
-		public static ArrayList<Case> genCases(String filepath) throws FileNotFoundException
+		public static ArrayList<Case> genCASES(String filepath) throws FileNotFoundException
 		{
 			ArrayList<Case> CASES = new ArrayList<Case>();
 			for (String s : Component.getInventoryList(filepath)) 
