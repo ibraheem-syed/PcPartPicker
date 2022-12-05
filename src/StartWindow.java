@@ -55,6 +55,7 @@ public class StartWindow extends JFrame
 		// Code for button at bottom
 		finalButton = new JButton("Calculate Total");
 		finalButton.addActionListener(new ButtonListener());
+		finalButton.setActionCommand("CALC");
 		southPanel = new JPanel ();
 		southPanel.add(finalButton);
 		add(southPanel,BorderLayout.SOUTH);
@@ -171,17 +172,21 @@ public class StartWindow extends JFrame
 			case "MOUSE":
 				new ComponentSelector(Main.myBuild.getMouseList(),Main.myBuild);
 				break;
-			}
-			
-			/*
-			 * TODO (Keyboard & Mouse)
-			 */
+				// TODO Keyboard	
+//			case "KB":
+//				new ComponentSelector(Main.myBuild.getKeyboardList(),Main.myBuild);
+//				break;
+			case "CALC":
+				if(!CalculateTotal.defaultCheck()) {
+					new CalculateTotal();
+					dispose();
+				}
+				else {
+					System.out.println("config incomplete");
+				}
 
-//			if( == finalButton)
-//			{
-//				//TODO
-//				System.out.println(Main.myBuild.getCPU().modelName);
-//			}
+				break;
+			}
 
 		}
 	}

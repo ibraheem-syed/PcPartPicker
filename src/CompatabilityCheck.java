@@ -21,22 +21,17 @@ public class CompatabilityCheck extends JFrame {
 		{
 			Main.myBuild.setCPU(proc);
 			imgPath = "images/" + proc.imagePath + "/" + proc.imageName;	
-			System.out.println(Main.myBuild.getMB().socketPinCount);
 			Main.buildWindow.middleButtons[0].setIcon(ImgScale.newIcon(imgPath,100));
 		}
 		else {
 			Main.myBuild.setCompatError(proc.modelName + " not compatible with current config");
 			CompatibilityCheck();
-			System.out.println("doing nothing");
 		}
 		
 	}
 	
 	public static void mb(Motherboard mobo) {
 		String imgPath = "images/" + Main.myBuild.getMB().imagePath + "/" + Main.myBuild.getMB().imageName;
-		System.out.println();
-		System.out.println("MB Socket " + mobo.socketPinCount);
-		System.out.println("CPU Socket " + Main.myBuild.getCPU().socketPinCount);
 		if(
 			(Main.myBuild.getCPU().socketPinCount.equals("DEFAULT") ||
 			Main.myBuild.getCPU().socketPinCount.equals(mobo.socketPinCount)) 
@@ -57,8 +52,6 @@ public class CompatabilityCheck extends JFrame {
 		else {
 			Main.myBuild.setCompatError(mobo.modelName + " not compatible with current config");
 			CompatibilityCheck();
-			System.out.println("doing nothing");
-
 		}
 
 	}
@@ -80,11 +73,8 @@ public class CompatabilityCheck extends JFrame {
 		}
 			
 		else {
-			
-			CompatibilityCheck();
 			Main.myBuild.setCompatError(ddr.modelName + " not compatible with current config");
-			System.out.println("doing nothing");
-
+			CompatibilityCheck();
 		}
 
 	}
@@ -96,7 +86,6 @@ public class CompatabilityCheck extends JFrame {
 			
 	    	  switch(e.getActionCommand()) {
 	    	  case "RESET":
-	    		  System.out.println("reset");
 	    		  Main.myBuild.setCPU(new Processor());
 	    		  Main.myBuild.setMB(new Motherboard());
 	    		  Main.myBuild.setRAM(new Memory());
@@ -105,7 +94,6 @@ public class CompatabilityCheck extends JFrame {
 	    		  Main.buildWindow.middleButtons[2].setIcon(ImgScale.newIcon("images/" + Main.myBuild.getRAM().imagePath + "/" + Main.myBuild.getRAM().imageName,100));	    		  
 	    		  break;
 	    	  case "CANCEL":
-	    		  System.out.println("cancel");
 	    		  break;
 	    	  }    	  
 	    	  
@@ -131,10 +119,8 @@ public class CompatabilityCheck extends JFrame {
 	    error.setHorizontalTextPosition(JLabel.CENTER);
 	    
 	    error.setText(Main.myBuild.getCompatError());
-//	    error.setBounds(100,50,400,100);
 	    error.setSize(600,100);
 	    error.setHorizontalAlignment(SwingConstants.CENTER);
-	    
 	    
 	    f.setLayout(new GridBagLayout());
 	    
@@ -147,10 +133,7 @@ public class CompatabilityCheck extends JFrame {
 		f.setResizable(false);
 		f.setLayout(null);
 		f.setLocationRelativeTo(null);
-		f.setVisible(true);
-		
-		System.out.println("not compatible");
-		
+		f.setVisible(true);		
 	}
 
 }
