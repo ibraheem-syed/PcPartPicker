@@ -90,8 +90,7 @@ public class CalculateTotal extends JFrame{
 		hddLabel.setIcon(compIcon); 
     	add(hddLabel);
     	
-//    	imgPath = "images/" + Main.myBuild.getKeyboard().getImagePath() + "/" + Main.myBuild.getKeyboard().getImageName();
-    	imgPath = "images/keyboards/default.png";
+    	imgPath = "images/" + Main.myBuild.getKeyboard().getImagePath() + "/" + Main.myBuild.getKeyboard().getImageName();
 		compIcon = ImgScale.newIcon(imgPath,75);	
 	    kbLabel.setSize(75,75);
 	    kbLabel.setLocation(25,720);
@@ -118,7 +117,7 @@ public class CalculateTotal extends JFrame{
 		Main.myBuild.getGPU().modelName.equals("DEFAULT") &&
 		
 		Main.myBuild.getStorage().modelName.equals("DEFAULT") &&
-//		Main.myBuild.getKeyboard().modelName.equals("DEFAULT") &&
+		Main.myBuild.getKeyboard().modelName.equals("DEFAULT") &&
 		Main.myBuild.getMouse().modelName.equals("DEFAULT")
 		);
 	}

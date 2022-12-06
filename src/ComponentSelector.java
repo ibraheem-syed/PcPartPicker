@@ -78,6 +78,12 @@ public class ComponentSelector extends JFrame {
 		              imgPath = "images/" + mouse.imagePath + "/" + mouse.imageName;
 		              Main.buildWindow.middleButtons[8].setIcon(ImgScale.newIcon(imgPath,100)); 
 		              break;
+		    	  case "KB":
+		    		  Keyboard keyboard = (Keyboard)compArrList.get(selectedIdx);
+		    		  Main.myBuild.setKeyboard(keyboard);
+		    		  imgPath = "images/" + keyboard.imagePath + "/" + keyboard.imageName;
+		    		  Main.buildWindow.middleButtons[7].setIcon(ImgScale.newIcon(imgPath,100));
+		    		  break;
 		    	  
 				/*
 				 * TODO (keyboard & mouse)

@@ -28,7 +28,7 @@ public class SystemConfig
 	private ArrayList<Memory> ramInventory;
 	private ArrayList<Case> chassisInventory;
 	private ArrayList<Mouse> mouseInventory;
-//	private ArrayList<Keyboard> keyboardInventory;
+	private ArrayList<Keyboard> keyboardInventory;
 	private ArrayList<PowerSupply> powerInventory;
 	private ArrayList<Storage> storageInventory;
 	private ArrayList<Graphics> gpuInventory;
@@ -39,7 +39,7 @@ public class SystemConfig
 		ramInventory = Memory.genRAMS("datasheets/memory.csv");
 		chassisInventory = Case.genCASES("datasheets/cases.csv");
 		mouseInventory = Mouse.genMICE("datasheets/mice.csv");
-//		keyboardInventory = Keyboard.genKBS("datasheets/keyboards.csv");
+		keyboardInventory = Keyboard.genKBS("datasheets/keyboards.csv");
 		powerInventory = PowerSupply.genPSUS("datasheets/powersupplies.csv");
 		storageInventory = Storage.genHDDS("datasheets/storages.csv");
 		gpuInventory = Graphics.genGPUS("datasheets/gpus.csv");
@@ -88,11 +88,11 @@ public class SystemConfig
 	public ArrayList<Mouse> getMouseList() {
 		return mouseInventory;
 	}
-//	
-//	public ArrayList<Keyboard> getKeyboardList() {
-//		return keyboardInventory;
-//	}
-//	
+	
+	public ArrayList<Keyboard> getKeyboardList() {
+		return keyboardInventory;
+	}
+	
 	public ArrayList<PowerSupply> getPowerSupplyList() {
 		return powerInventory;
 	}

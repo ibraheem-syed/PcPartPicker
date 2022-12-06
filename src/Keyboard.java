@@ -5,13 +5,13 @@ public class Keyboard extends Component {
 	Keyboard(){
 		super();
 		cost = 0.0;
-		imagePath = "keyboard";
+		imagePath = "keyboards";
 	}
 	
 	//Processor(String man, String mod, String img, String price, String ddr){
 	Keyboard(String specs[]){
 		super(specs[0],specs[1],specs[2],specs[3]);
-		imagePath = "keyboard";
+		imagePath = "keyboards";
 	}
 	
 	public static ArrayList<Keyboard> genKBS(String filepath) throws FileNotFoundException{

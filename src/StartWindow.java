@@ -111,7 +111,7 @@ public class StartWindow extends JFrame
 		middleButtons[6].setVerticalTextPosition(SwingConstants.BOTTOM);
 		middleButtons[6].setHorizontalTextPosition(SwingConstants.CENTER);
 		
-		middleButtons[7] = new JButton("KB");
+		middleButtons[7] = new JButton("KB", ImgScale.newIcon("images/" + Main.myBuild.getKeyboard().imagePath + "/" + Main.myBuild.getKeyboard().imageName,100));
 		middleButtons[7].setActionCommand("KB");
 		middleButtons[7].setVerticalTextPosition(SwingConstants.BOTTOM);
 		middleButtons[7].setHorizontalTextPosition(SwingConstants.CENTER);
@@ -173,9 +173,9 @@ public class StartWindow extends JFrame
 				new ComponentSelector(Main.myBuild.getMouseList(),Main.myBuild);
 				break;
 				// TODO Keyboard	
-//			case "KB":
-//				new ComponentSelector(Main.myBuild.getKeyboardList(),Main.myBuild);
-//				break;
+			case "KB":
+				new ComponentSelector(Main.myBuild.getKeyboardList(),Main.myBuild);
+				break;
 			case "CALC":
 				if(!CalculateTotal.defaultCheck()) {
 					new CalculateTotal();
