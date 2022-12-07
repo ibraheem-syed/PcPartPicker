@@ -85,9 +85,6 @@ public class ComponentSelector extends JFrame {
 		    		  Main.buildWindow.middleButtons[7].setIcon(ImgScale.newIcon(imgPath,100));
 		    		  break;
 		    	  
-				/*
-				 * TODO (keyboard & mouse)
-				 */
 	    	  }   
 	    	  Main.buildWindow.runningTotal.setText("Running Total: $" + String.format("%.2f", Main.myBuild.getRunningTotal()));
 	    	  f.dispose();

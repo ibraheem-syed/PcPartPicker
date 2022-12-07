@@ -25,6 +25,10 @@ public class StartWindow extends JFrame
 	JPanel centerPanel;
 	JButton finalButton;
 	JButton temp;
+	JFrame incomplete = new JFrame();
+	JButton close = new JButton();
+	JLabel error = new JLabel();
+	
 	private static String currentComp;
 	
 	public static String getCurrentComp() {
@@ -45,7 +49,7 @@ public class StartWindow extends JFrame
 	    setLocationRelativeTo(null);
 	
 		setLayout(new BorderLayout());
-		
+			
 		// Code for the top of borderPanel
 		runningTotal = new JLabel ("Running Total: $0");
 		northPanel = new JPanel ();
@@ -172,20 +176,36 @@ public class StartWindow extends JFrame
 			case "MOUSE":
 				new ComponentSelector(Main.myBuild.getMouseList(),Main.myBuild);
 				break;
-				// TODO Keyboard	
 			case "KB":
 				new ComponentSelector(Main.myBuild.getKeyboardList(),Main.myBuild);
 				break;
 			case "CALC":
 				if(!CalculateTotal.defaultCheck()) {
-					new CalculateTotal();
 					dispose();
+					new CalculateTotal();
 				}
+				
 				else {
-					System.out.println("config incomplete");
+					error.setText("Configuration is incomplete"); 
+					error.setVerticalTextPosition(JLabel.TOP);
+				    error.setHorizontalAlignment(SwingConstants.CENTER);
+				    error.setSize(300,50);				
+					close.setActionCommand("CLOSE");
+					close.addActionListener(new ButtonListener());
+					close.setText("CLOSE");
+					close.setBounds(100,50,100,25);
+					incomplete.add(error);
+					incomplete.add(close);
+					incomplete.setSize(300,100);
+					incomplete.setTitle("Incomplete");
+					incomplete.setResizable(false);
+					incomplete.setLayout(null);
+					incomplete.setLocationRelativeTo(null);
+					incomplete.setVisible(true);
 				}
-
 				break;
+			case "CLOSE":
+				incomplete.dispose();
 			}
 
 		}
