@@ -55,22 +55,22 @@ public class CalculateTotal extends JFrame{
 	
 	CalculateTotal(){
 		
-		setSize(525,1000);
+		setSize(525,700);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Final Config");
-		setResizable(false);
+		setResizable(true);
 	    setLayout(null);
 	    setLocationRelativeTo(null);
 		setVisible(true);
     	    	
     	imgPath = "images/" + Main.myBuild.getCPU().getImagePath() + "/" + Main.myBuild.getCPU().getImageName();
-		compIcon = ImgScale.newIcon(imgPath,75);
-	    cpuLabel.setSize(75,75);
+		compIcon = ImgScale.newIcon(imgPath,50);
+	    cpuLabel.setSize(50,50);
 	    cpuLabel.setLocation(25,20);
     	cpuLabel.setIcon(compIcon);
 
     	cpuMakeModelPrice.setText(Main.myBuild.getCPU().manufacturer + " - " + Main.myBuild.getCPU().modelName + " - $" + String.format("%.2f",Main.myBuild.getCPU().cost));
-	    cpuMakeModelPrice.setSize(300,75);
+	    cpuMakeModelPrice.setSize(300,50);
 	    cpuMakeModelPrice.setLocation(200,20);
 	    cpuMakeModelPrice.setHorizontalAlignment(SwingConstants.RIGHT);
     	  	
@@ -78,112 +78,112 @@ public class CalculateTotal extends JFrame{
     	add(cpuMakeModelPrice);
     	
     	imgPath = "images/" + Main.myBuild.getMB().getImagePath() + "/" + Main.myBuild.getMB().getImageName();
-		compIcon = ImgScale.newIcon(imgPath,75);	
-	    mbLabel.setSize(75,75);
-	    mbLabel.setLocation(25,120);
+		compIcon = ImgScale.newIcon(imgPath,50);	
+	    mbLabel.setSize(50,50);
+	    mbLabel.setLocation(25,80);
     	mbLabel.setIcon(compIcon); 
     	
     	mbMakeModelPrice.setText(Main.myBuild.getMB().manufacturer + " - " + Main.myBuild.getMB().modelName + " - $" + String.format("%.2f",Main.myBuild.getMB().cost));
-	    mbMakeModelPrice.setSize(300,75);
-	    mbMakeModelPrice.setLocation(200,120);
+	    mbMakeModelPrice.setSize(300,50);
+	    mbMakeModelPrice.setLocation(200,80);
 	    mbMakeModelPrice.setHorizontalAlignment(SwingConstants.RIGHT);
     	
     	add(mbLabel);
     	add(mbMakeModelPrice);
 
     	imgPath = "images/" + Main.myBuild.getRAM().getImagePath() + "/" + Main.myBuild.getRAM().getImageName();
-		compIcon = ImgScale.newIcon(imgPath,75);	
-	    ramLabel.setSize(75,75);
-	    ramLabel.setLocation(25,220);
+		compIcon = ImgScale.newIcon(imgPath,50);	
+	    ramLabel.setSize(50,50);
+	    ramLabel.setLocation(25,140);
     	ramLabel.setIcon(compIcon); 
     	
     	ramMakeModelPrice.setText(Main.myBuild.getRAM().manufacturer + " - " + Main.myBuild.getRAM().modelName + " - $" + String.format("%.2f",Main.myBuild.getRAM().cost));
 	    ramMakeModelPrice.setSize(300,75);
-	    ramMakeModelPrice.setLocation(200,220);
+	    ramMakeModelPrice.setLocation(200,140);
 	    ramMakeModelPrice.setHorizontalAlignment(SwingConstants.RIGHT);
     	
     	add(ramLabel);
     	add(ramMakeModelPrice);
     	
     	imgPath = "images/" + Main.myBuild.getCase().getImagePath() + "/" + Main.myBuild.getCase().getImageName();
-		compIcon = ImgScale.newIcon(imgPath,75);	
-		caseLabel.setSize(75,75);
-		caseLabel.setLocation(25,320);
+		compIcon = ImgScale.newIcon(imgPath,50);	
+		caseLabel.setSize(50,50);
+		caseLabel.setLocation(25,200);
 		caseLabel.setIcon(compIcon); 
 		
 		caseMakeModelPrice.setText(Main.myBuild.getCase().manufacturer + " - " + Main.myBuild.getCase().modelName + " - $" + String.format("%.2f",Main.myBuild.getCase().cost));
 		caseMakeModelPrice.setSize(300,75);
-		caseMakeModelPrice.setLocation(200,320);
+		caseMakeModelPrice.setLocation(200,200);
 		caseMakeModelPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		
     	add(caseLabel);
     	add(caseMakeModelPrice);
     	
     	imgPath = "images/" + Main.myBuild.getPowerSupply().getImagePath() + "/" + Main.myBuild.getPowerSupply().getImageName();
-		compIcon = ImgScale.newIcon(imgPath,75);	
-	    psuLabel.setSize(75,75);
-	    psuLabel.setLocation(25,420);
+		compIcon = ImgScale.newIcon(imgPath,50);	
+	    psuLabel.setSize(50,50);
+	    psuLabel.setLocation(25,260);
     	psuLabel.setIcon(compIcon); 
     	
     	psuMakeModelPrice.setText(Main.myBuild.getPowerSupply().manufacturer + " - " + Main.myBuild.getPowerSupply().modelName + " - $" + String.format("%.2f",Main.myBuild.getPowerSupply().cost));
     	psuMakeModelPrice.setSize(300,75);
-    	psuMakeModelPrice.setLocation(200,420);
+    	psuMakeModelPrice.setLocation(200,260);
     	psuMakeModelPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 
     	add(psuLabel);
     	add(psuMakeModelPrice);
     	
     	imgPath = "images/" + Main.myBuild.getGPU().getImagePath() + "/" + Main.myBuild.getGPU().getImageName();
-		compIcon = ImgScale.newIcon(imgPath,75);	
-	    gpuLabel.setSize(75,75);
-	    gpuLabel.setLocation(25,520);
+		compIcon = ImgScale.newIcon(imgPath,50);	
+	    gpuLabel.setSize(50,50);
+	    gpuLabel.setLocation(25,320);
     	gpuLabel.setIcon(compIcon); 
     	
     	gpuMakeModelPrice.setText(Main.myBuild.getGPU().manufacturer + " - " + Main.myBuild.getGPU().modelName + " - $" + String.format("%.2f",Main.myBuild.getGPU().cost));
 	    gpuMakeModelPrice.setSize(300,75);
-	    gpuMakeModelPrice.setLocation(200,520);
+	    gpuMakeModelPrice.setLocation(200,320);
 	    gpuMakeModelPrice.setHorizontalAlignment(SwingConstants.RIGHT);
     	
     	add(gpuLabel);
     	add(gpuMakeModelPrice);
     	
     	imgPath = "images/" + Main.myBuild.getStorage().getImagePath() + "/" + Main.myBuild.getStorage().getImageName();
-		compIcon = ImgScale.newIcon(imgPath,75);	
-		hddLabel.setSize(75,75);
-		hddLabel.setLocation(25,620);
+		compIcon = ImgScale.newIcon(imgPath,50);	
+		hddLabel.setSize(50,50);
+		hddLabel.setLocation(25,380);
 		hddLabel.setIcon(compIcon); 
 		
 		hddMakeModelPrice.setText(Main.myBuild.getStorage().manufacturer + " - " + Main.myBuild.getStorage().modelName + " - $" + String.format("%.2f",Main.myBuild.getStorage().cost));
 		hddMakeModelPrice.setSize(300,75);
-		hddMakeModelPrice.setLocation(200,620);
+		hddMakeModelPrice.setLocation(200,380);
 		hddMakeModelPrice.setHorizontalAlignment(SwingConstants.RIGHT);
 		
     	add(hddLabel);
     	add(hddMakeModelPrice);
     	
     	imgPath = "images/" + Main.myBuild.getKeyboard().getImagePath() + "/" + Main.myBuild.getKeyboard().getImageName();
-		compIcon = ImgScale.newIcon(imgPath,75);	
-	    kbLabel.setSize(75,75);
-	    kbLabel.setLocation(25,720);
+		compIcon = ImgScale.newIcon(imgPath,50);	
+	    kbLabel.setSize(50,50);
+	    kbLabel.setLocation(25,440);
     	kbLabel.setIcon(compIcon); 
     	
     	kbMakeModelPrice.setText(Main.myBuild.getKeyboard().manufacturer + " - " + Main.myBuild.getKeyboard().modelName + " - $" + String.format("%.2f",Main.myBuild.getKeyboard().cost));
 	    kbMakeModelPrice.setSize(300,75);
-	    kbMakeModelPrice.setLocation(200,720);
+	    kbMakeModelPrice.setLocation(200,440);
 	    kbMakeModelPrice.setHorizontalAlignment(SwingConstants.RIGHT);
     	
     	add(kbLabel);
     	add(kbMakeModelPrice);
     	
     	imgPath = "images/" + Main.myBuild.getMouse().getImagePath() + "/" + Main.myBuild.getMouse().getImageName();
-		compIcon = ImgScale.newIcon(imgPath,75);	
-	    mouseLabel.setSize(75,75);
-	    mouseLabel.setLocation(25,820);
+		compIcon = ImgScale.newIcon(imgPath,50);	
+	    mouseLabel.setSize(50,50);
+	    mouseLabel.setLocation(25,500);
     	mouseLabel.setIcon(compIcon); 
     	
     	mouseMakeModelPrice.setText(Main.myBuild.getMouse().manufacturer + " - " + Main.myBuild.getMouse().modelName + " - $" + String.format("%.2f",Main.myBuild.getMouse().cost));
     	mouseMakeModelPrice.setSize(300,75);
-    	mouseMakeModelPrice.setLocation(200,820);
+    	mouseMakeModelPrice.setLocation(200,500);
     	mouseMakeModelPrice.setHorizontalAlignment(SwingConstants.RIGHT);
     	
     	add(mouseLabel);
@@ -192,15 +192,15 @@ public class CalculateTotal extends JFrame{
 		close.setActionCommand("CLOSE");
 		close.addActionListener(new closeButtonListener());
 		close.setText("CLOSE");
-		close.setBounds(350,925,125,25);
+		close.setBounds(300,600,125,25);
 		
 		add(close);
 		
 		totalPrice.setText("Total Price - $" + String.format("%.2f",Main.myBuild.getRunningTotal()));
-		totalPrice.setBounds(100,925,200,25);
+		totalPrice.setBounds(100,600,150,25);
 		
 		add(totalPrice);
-				
+
 	}
 	
 	public static boolean defaultCheck() {

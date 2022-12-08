@@ -196,7 +196,7 @@ public class StartWindow extends JFrame
 					close.setBounds(100,50,100,25);
 					incomplete.add(error);
 					incomplete.add(close);
-					incomplete.setSize(300,100);
+					incomplete.setSize(300,140);
 					incomplete.setTitle("Incomplete");
 					incomplete.setResizable(false);
 					incomplete.setLayout(null);
